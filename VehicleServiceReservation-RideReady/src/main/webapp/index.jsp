@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOC TYPE html>
 <html>
 <head>
-<title>Vehicle Service Reservation App</title>
+    <title>Vehicle Service Reservations</title>
 </head>
 <body>
-<h1>Welcome</h1>
-<h2>Hello World!</h2>
-
+    <h1>Welcome to Vehicle Service Reservations</h1>
+    <p><a href="DisplayReservationsServlet">View Reservations</a></p>
 </body>
 </html>
+
