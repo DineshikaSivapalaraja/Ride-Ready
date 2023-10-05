@@ -22,6 +22,14 @@ public class vehicle {
         this.username = username;
     }
 
+//    public vehicle(){
+//
+//    }
+
+    public vehicle(String date, String time, String location, String vehicle_no, int mileage, String message, String username) {
+    }
+
+
     //generate getters and setters
     public int getBooking_id() {
         return booking_id;
