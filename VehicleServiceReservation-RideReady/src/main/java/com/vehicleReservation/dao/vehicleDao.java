@@ -177,9 +177,9 @@ public class vehicleDao {
 
     private static final String INSERT_Vehicle_SQL = "INSERT INTO vehicle_service (date, time, location, vehicle_no, mileage, message, username) VALUES (?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_Vehicle_BY_ID = "SELECT booking_id, date, time, location, vehicle_no, mileage, message, username FROM vehicle_service WHERE booking_id = ?;";
-    private static final String SELECT_ALL_Vehicle = "SELECT * FROM vehicle_service;";
+//    private static final String SELECT_ALL_Vehicle = "SELECT * FROM vehicle_service;";
     private static final String DELETE_Vehicle_SQL = "DELETE FROM vehicle_service WHERE booking_id = ?;";
-    private static final String UPDATE_Vehicle_SQL = "UPDATE vehicle_service SET date = ?, time = ?, location = ?, vehicle_no = ?, mileage = ?, message = ?, username = ? WHERE booking_id = ?;";
+   // private static final String UPDATE_Vehicle_SQL = "UPDATE vehicle_service SET date = ?, time = ?, location = ?, vehicle_no = ?, mileage = ?, message = ?, username = ? WHERE booking_id = ?;";
 
     // ... (rest of the code remains the same)
 
