@@ -15,6 +15,8 @@
         </ul>
     </div>
 
+
+
     <form action="add-reservation-process.jsp" method="post">
         <h2>Add Reservation Form</h2>
         <label>Date of Service Reservation:</label>
@@ -31,10 +33,10 @@
         <select name="location">
             <option value="Colombo">Colombo</option>
             <option value="Gampaha">Gampaha</option>
-            <option value="Galle">Colombo</option>
-            <option value="Kandy">Gampaha</option>
-            <option value="Jaffna">Colombo</option>
-            <option value="Ampara">Gampaha</option>
+            <option value="Galle">Galle</option>
+            <option value="Kandy">Kandy</option>
+            <option value="Jaffna">Jaffna</option>
+            <option value="Ampara">Ampara</option>
         </select><br>
 
         <label>Vehicle Number:</label>
@@ -45,6 +47,12 @@
 
         <label>Message:</label>
         <textarea name="message"></textarea><br>
+
+        <label>Username:</label>
+        <input type="hidden" name="username" value="<%= request.getRemoteUser() %>">
+
+        <label>Username:</label>
+        <input type="text" name="username" value="<%= request.getRemoteUser() %>" readonly>
 
         <div class="center">
            <button class="button">Submit</button>

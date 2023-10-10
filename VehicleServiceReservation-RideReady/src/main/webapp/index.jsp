@@ -11,6 +11,8 @@
 		</div>
 
         <div>
+        <li class="nl"><a href="add-reservation.jsp">Add</a></li>
+        <li class="nl"><a href="view-records.jsp">View</a></li>
           <h2> Welcome to Ride Ready Vehicle reservation Application </h2>
           <br>
           <h2> Login to the page to Enjoy the privileges </h2>

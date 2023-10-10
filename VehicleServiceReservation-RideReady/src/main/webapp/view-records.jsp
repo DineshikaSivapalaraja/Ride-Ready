@@ -21,23 +21,27 @@
     <table>
         <!-- Table header -->
         <tr>
+            <th>Booking ID</th>
             <th>Date</th>
             <th>Time</th>
             <th>Location</th>
             <th>Vehicle Number</th>
             <th>Mileage</th>
             <th>Message</th>
+            <th>Username</th>
             <th>Action</th>
         </tr>
         <!-- Loop through and display reservation records -->
         <c:forEach items="${reservationList}" var="reservation">
             <tr>
+                <td>${reservation.booking_id}</td>
                 <td>${reservation.date}</td>
                 <td>${reservation.time}</td>
                 <td>${reservation.location}</td>
                 <td>${reservation.vehicle_no}</td>
                 <td>${reservation.mileage}</td>
                 <td>${reservation.message}</td>
+                <td>${reservation.username}</td>
                 <td><a href="delete-reservation.jsp?id=${reservation.id}">Delete</a></td>
             </tr>
         </c:forEach>
