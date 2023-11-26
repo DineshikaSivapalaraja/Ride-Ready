@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@page import="com.web.database.DB_Connection"%>
+<%@page import="com.web.database.DBConnection"%>
+<%@page import="com.web.database.DBConfig"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.text.SimpleDateFormat" %>
 
 <%
-    String username = "testuser";
+    //String username = "testuser";
 
-    // Retrieve form data  
+    // Retrieve form data 
+    String username = request.getParameter("username");
     String dateStg = request.getParameter("date");
     String time = request.getParameter("time");
     String location = request.getParameter("location");
@@ -31,7 +33,7 @@
         java.sql.Time sqlTime = new java.sql.Time(parsedTime.getTime());
 
         // Perform database operations (insertion) here using the retrieved data
-        Connection con = DB_Connection.getCon();
+        Connection con = DBConnection.getCon();
         PreparedStatement ps = con.prepareStatement("insert into vehicle_service (date, time, location, vehicle_no, mileage, message, username) values(?,?,?,?,?,?,?)");
         // Set parameters for the prepared statement
         ps.setDate(1, sqlDate);

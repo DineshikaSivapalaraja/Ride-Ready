@@ -10,10 +10,12 @@
 
 <%@page import="java.sql.*"%>
 <%@page import="java.text.SimpleDateFormat" %>
-<%@page import="com.web.database.DB_Connection"%>
+<%@page import="com.web.database.DBConnection"%>
+<%@page import="com.web.database.DBConfig"%>
 
 <%
-   String username = "testuser";
+   //String username = "testuser";
+ String username =  (String)request.getSession().getAttribute("username"); 
 %>
 
 <body>
@@ -74,7 +76,7 @@
         <textarea name="message"></textarea><br>
 
         <label>Username:</label>
-        <input type="text" name="username" value="<%= request.getRemoteUser() %>" readonly>
+        <input type="text" name="username" value="<%= username %>" readonly>
 
         <div class="center">
            <button class="button" type="submit">Submit</button>

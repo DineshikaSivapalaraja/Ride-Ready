@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<%@ page import="com.web.database.DB_Connection"%>
+<%@ page import="com.web.database.DBConnection"%>
 <%@ page import="java.sql.*"%>
 
 <%
-    String bookingId = request.getParameter("id");
+String bookingId = request.getParameter("id");
 
     try {
-        Connection con = DB_Connection.getCon();
+        Connection con = DBConnection.getCon();
         PreparedStatement ps = con.prepareStatement("DELETE FROM vehicle_service WHERE booking_id = ?");
         ps.setString(1, bookingId);
 

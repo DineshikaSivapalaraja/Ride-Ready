@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<%@page import="com.web.database.DB_Connection"%>
-<%@page import="java.sql.*"%>
+<%@ page import="com.web.database.DBConnection" %>
+<%@ page import="com.web.database.DBConfig" %>
+<%@ page import="java.sql.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,21 +12,29 @@
       <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
+       <div class="navbar">
+          <h1> Vehicle Service Reservation <br> Ride Ready</h1>
+          <ul class="nav">
+              <li class="nl"><a href="home.jsp">Home</a></li>
+              <li class="nl"><a href="add-reservation.jsp">Add</a></li>
+          </ul>
+      </div>
        
 <%
-    try {
-        
-        // For testing purposes, set manual username
-        String username = "testuser";
+       String username =  (String)request.getSession().getAttribute("username");
+           try {
+               
+               // For testing purposes, set manual username
+               //String username = "testuser";
 
-        // Fetch reservation records from the database
-        Connection con = DB_Connection.getCon();
-        PreparedStatement ps = con.prepareStatement("select * from vehicle_service where username = ?");
-        ps.setString(1, username);
-        ResultSet rs = ps.executeQuery();
+               // Fetch reservation records from the database
+               Connection con = DBConnection.getCon();
+               PreparedStatement ps = con.prepareStatement("select * from vehicle_service where username = ?");
+               ps.setString(1, username);
+               ResultSet rs = ps.executeQuery();
 
-        if (rs.next()) {
-%>
+               if (rs.next()) {
+       %>
 
     <div class="navbar">
          <h1> Vehicle Service Reservation <br> Ride Ready</h1>

@@ -21,9 +21,16 @@
           <h2> Login to the page to Enjoy the privileges </h2>
           <br>
           <div class="center">
-              <button class="login" style="text-align: center">Login</button>
+              <button class="login" style="text-align: center">
+                  <a href="https://api.asgardeo.io/t/dineshiorg/oauth2/authorize?scope=openid address country email phone profile&response_type=code&redirect_uri=http://localhost:8080/Ride_Ready_-_Vehicle_Reservation_App/oauthorize.jsp&client_id=bG3EtUSLDKifx3Hk3msCIAMIdH0a">
+                        Login
+                  </a>
+              </button>
+              
           </div>
      </div> 
 </body>
 </html>
+
+
 
