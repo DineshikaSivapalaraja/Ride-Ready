@@ -65,7 +65,7 @@
              <td><%= rs.getString("mileage") %></td>
              <td><%= rs.getString("message") %></td>
              <td><%= rs.getString("username") %></td>
-             <td><a href="delete-reservation.jsp?id=<%= rs.getString("id") %>">Delete</a></td>
+             <td><a href="delete-reservation.jsp?id=<%= rs.getString("booking_id") %>">Delete</a></td><!--  fix  -->
          </tr>
          <%
              } while (rs.next());
@@ -76,7 +76,7 @@
 <%
      } else {
 %>
-     <p>No reservations.</p>
+     <p style="color: red; font-size: 30px;">No reservations.</p>
 <%
       }
     } catch (SQLException e) {

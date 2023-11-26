@@ -1,6 +1,8 @@
 package com.web.database;
 
-import java.sql.*;
+//import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class DB_Connection {
 	public static Connection getCon() {
@@ -18,7 +20,8 @@ public class DB_Connection {
 			return conn;
 		}
 		catch(Exception e){
-			System.out.print(e);
+//			System.out.print(e);
+			e.printStackTrace();
 			return null;
 		} 
 	}

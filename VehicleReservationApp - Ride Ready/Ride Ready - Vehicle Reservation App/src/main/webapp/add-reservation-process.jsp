@@ -6,15 +6,13 @@
 <%@page import="java.text.SimpleDateFormat" %>
 
 <%
-
     String username = "testuser";
 
-    // Retrieve form data 
-    
+    // Retrieve form data  
     String dateStg = request.getParameter("date");
     String time = request.getParameter("time");
     String location = request.getParameter("location");
-    String vehicleRegNo = request.getParameter("vehicle_reg_no");
+    String vehicleRegNo = request.getParameter("vehicle_no");
     String mileageStg = request.getParameter("mileage");
     String message = request.getParameter("message");
 
@@ -49,9 +47,17 @@
 
         if (rowsAffected > 0) {
             // Redirect to the same page with a success message
-            response.sendRedirect("add-reservation.jsp?msg=valid");
+            //response.sendRedirect("add-reservation.jsp?msg=valid");
+            
+        	// Debugging statement
+           //System.out.println("Reservation added successfully!");
+          response.sendRedirect("add-reservation.jsp?msg=valid");
         } else {
             // Redirect to the same page with an error message
+           // response.sendRedirect("add-reservation.jsp?msg=Invalid");
+            
+         // Debugging statement
+            //System.out.println("Failed to add reservation.");
             response.sendRedirect("add-reservation.jsp?msg=Invalid");
         }
 
@@ -64,3 +70,8 @@
         response.sendRedirect("add-reservation.jsp?msg=exception");
     }
 %>
+
+
+
+
+
