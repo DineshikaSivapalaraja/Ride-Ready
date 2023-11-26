@@ -85,7 +85,7 @@
 <%
      } else {
 %>
-     <p style="color: red; font-size: 30px;">No reservations.</p>
+     <p style="color: red; font-size: 30px; text-align: center;">No reservations.</p>
 <%
       }
     } catch (SQLException e) {

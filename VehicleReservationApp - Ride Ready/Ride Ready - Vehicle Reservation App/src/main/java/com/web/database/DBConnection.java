@@ -4,7 +4,13 @@ package com.web.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+
 public class DBConnection {
+	
+//	private static final String url="jdbc:mysql://172.187.178.153:3306/isec_assessment2";
+//	private static final String username="isec";
+//	private static final String password="EUHHaYAmtzbv";
+		
 	public static Connection getCon() {
 		try {
 			// Load the JDBC driver

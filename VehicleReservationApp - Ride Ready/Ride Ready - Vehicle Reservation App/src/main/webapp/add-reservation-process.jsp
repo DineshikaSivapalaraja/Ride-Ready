@@ -72,8 +72,3 @@
         response.sendRedirect("add-reservation.jsp?msg=exception");
     }
 %>
-
-
-
-
-

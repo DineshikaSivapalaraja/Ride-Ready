@@ -28,13 +28,18 @@
         </ul>
     </div>
     
-<% String msg = request.getParameter("msg");
-   if (msg != null && !msg.isEmpty()) { %>
-   <div style="color: red; font-size: 30px;" class="<%= msg.equals("valid") ? "alert alert-success" : "alert alert-danger" %>">
-       <%= msg.equals("valid") ? "Reservation added successfully!" : "Failed to add reservation. Please try again." %>
-   </div>
-<% } %>
-    
+<%
+    String msg = request.getParameter("msg");
+    if (msg != null && !msg.isEmpty()) {
+        String alertClass = msg.equals("valid") ? "alert-success" : "alert-danger";
+        String alertMessage = msg.equals("valid") ? "Reservation added successfully!" : "Failed to add reservation. Please try again.";
+%>
+    <div style="color: red; font-size: 30px;" class="alert <%= alertClass %>">
+        <%= alertMessage %>
+    </div>
+<%
+    }
+%>
 
     <form action="add-reservation-process.jsp" method="post">
         <h2>Add Reservation Form</h2>

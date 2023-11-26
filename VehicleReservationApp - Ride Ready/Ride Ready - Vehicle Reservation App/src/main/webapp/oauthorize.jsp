@@ -6,12 +6,11 @@
 <%@ page import="org.json.JSONObject" %>
 
 <%
-// Extract the authorization code from the request parameters
     String authorizationCode = request.getParameter("code");
 
-    // Check if the authorization code is not null or empty
+    // Check authorization code is not null or empty
     if (authorizationCode != null && !authorizationCode.isEmpty()) {
-    	// Use the configuration parameters from Config.java
+    	// Use the configuration 
         String clientId = OIDCConfig.getClientId();
         String clientSecret = OIDCConfig.getClientSecret();
         String redirectUri = OIDCConfig.getRedirectUri();
@@ -26,7 +25,7 @@
                     "&client_secret=" + clientSecret +
                     "&redirect_uri=" + URLEncoder.encode(redirectUri, "UTF-8");
 
-            // Create a URL object for the token endpoint
+            // Create URL for the token endpoint
             URL tokenUrl = new URL(tokenEndpoint);
 
             // Open a connection to the token endpoint
@@ -56,7 +55,7 @@
                     tokenResponse.append(tokenInputLine);
                 }
 
-             	// Handle the response data here
+             	// Handle the response data
                 String responseDataStr = tokenResponse.toString();
                 
                 // Parse the response data as JSON

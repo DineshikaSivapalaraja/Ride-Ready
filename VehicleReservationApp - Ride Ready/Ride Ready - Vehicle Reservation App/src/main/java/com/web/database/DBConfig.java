@@ -14,7 +14,7 @@ public class DBConfig {
             e.printStackTrace();
         }
     }
-    
+
     //Method to retrieve the values for url,username,password of the DB
     public static String getDbURL() {
         return properties.getProperty("db_url");

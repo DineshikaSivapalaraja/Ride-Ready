@@ -17,14 +17,15 @@
               <li class="nl"><a href="home.jsp">Home</a></li>
               <li class="nl"><a href="view-records.jsp">Records</a></li>
               <li class="nl"><a href="add-reservation.jsp">Add</a></li>
+              <li class="nl">Logout</li>
            </ul>
       </div>
 <%
-    // Extract the access_token and id_token from session attribute
+    // Extract the access_token, id_token from session
         String accessToken = (String) request.getSession().getAttribute("access_token");
         String idToken = (String) request.getSession().getAttribute("id_token");
 
-    // Check if the access token is not null or empty
+    // Check access token is not null or empty
     if (accessToken != null && !accessToken.isEmpty()) {
         // Define userinfo endpoint
         String userinfoEndpoint = "https://api.asgardeo.io/t/dineshiorg/oauth2/userinfo";
@@ -64,20 +65,20 @@
                 String firstName = userinfoJson.optString("given_name");
                 String lastName = userinfoJson.optString("family_name");
                 String email = userinfoJson.optString("email");
-                String contactNumber = userinfoJson.optString("phone_number");
+                String contactNo = userinfoJson.optString("phone_number");
              	// Extract the address object
                 JSONObject addressJson = userinfoJson.optJSONObject("address");
 
-                // Initialize country as an empty string (or any default value)
+                // Initialize country as an empty string 
                 String country = "";
 
-                // Check if the address object is not null
+                // Check address is not null
                 if (addressJson != null) {
                     // Retrieve the country from the address object
                     country = addressJson.optString("country");
                 }
 
-             	// Set the username as a session attribute
+             	// Set the username as session
                 request.getSession().setAttribute("username", username);
 
 %>
@@ -88,7 +89,7 @@
             <li><b>Username:</b><%= username %></li>
             <li><b>Name:</b><%= firstName +" "+lastName %>
             <li><b>Email:</b><%= email %></li> 
-            <li><b>Contact Number:</b><%= contactNumber %></li> 
+            <li><b>Contact Number:</b><%= contactNo %></li> 
             <li><b>Country:</b><%= country %></li> 
           </ul>
       </div>
@@ -101,7 +102,7 @@
             e.printStackTrace();
         }
     } else {
-        // Handle the case where the access token is not present
+        // Access token is not present
         out.println("Access token is missing.");
     }
 %>
