@@ -18,9 +18,10 @@
           <br>
           <h2> Login to the page to Enjoy the privileges </h2>
           <br>
+ 
           <div class="center" id="boX">
               <button class="login" style="text-align: center" >
-                  <a id="ind1" href="https://api.asgardeo.io/t/dineshiorg/oauth2/authorize?scope=openid name email phone country profile&response_type=code&redirect_uri=http://localhost:8080/Ride_Ready_-_Vehicle_Reservation_App/oauthorize.jsp&client_id=gYaBx1rA9Ss91g4xFww1bbmT394a">Login</a>
+                  <a id="ind1" href="https://api.asgardeo.io/t/dineshiorg/oauth2/authorize?scope=openid address country email phone profile&response_type=code&redirect_uri=http://localhost:8080/Ride_Ready_-_Vehicle_Reservation_App/oauthorize.jsp&client_id=gYaBx1rA9Ss91g4xFww1bbmT394a">Login</a>
               </button>
               
               <p class="register" >No account?<br>Register today!</p>
@@ -30,6 +31,10 @@
      </div> 
 </body>
 </html>
+
+
+
+
 
 
 

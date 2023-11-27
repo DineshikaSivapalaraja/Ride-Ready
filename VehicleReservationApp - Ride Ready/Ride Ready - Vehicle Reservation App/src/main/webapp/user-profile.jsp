@@ -21,6 +21,7 @@
 
       <div class="pro">
       <h2>User Profile</h2>
+      <!-- Hardcoded details -->
           <ul>
             <li><b>Username:</b> <%= request.getRemoteUser() %></li>
             <li><b>Name:</b> John Doe</li> <!-- Replace with actual user name -->

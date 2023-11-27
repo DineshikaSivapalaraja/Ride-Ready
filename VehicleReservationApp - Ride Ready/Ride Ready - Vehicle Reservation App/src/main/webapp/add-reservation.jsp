@@ -12,12 +12,19 @@
 <%@page import="java.text.SimpleDateFormat" %>
 <%@page import="com.web.database.DBConnection"%>
 <%@page import="com.web.database.DBConfig"%>
+<%@page import="org.owasp.encoder.Encode"%>
+
+<%! 
+    // Method for encoding user input using OWASP Java Encoder
+    private String encodeInput(String input) {
+        return Encode.forHtml(input);
+    }
+%>
 
 <%
    //String username = "testuser";
  String username =  (String)request.getSession().getAttribute("username"); 
 %>
-
 
 <body>
     <div class="navbar">
@@ -47,7 +54,7 @@
 	 <h2>Add Reservation Form</h2>	
 	        <div >
 				<label for="username">Username</label>
-				<input type="text" name="username" value="<%= username %>" readonly>
+				<input type="text" name="username" value="<%= encodeInput(username) %>" readonly>
             </div>
 			<div >
 				<label for="date">Date of Service Reservation</label>
@@ -90,7 +97,7 @@
 			</div>          	
 			<div>
 				<label for="message">Message</label>
-				<textarea name="message"></textarea><br>
+				<textarea name="message"><%= encodeInput("") %></textarea><br>
 			</div>
 			<div class="center">
                  <button class="button" type="submit">Submit</button>
@@ -98,7 +105,6 @@
 </form>	 
 </body>
 </html>
-
 
 
     

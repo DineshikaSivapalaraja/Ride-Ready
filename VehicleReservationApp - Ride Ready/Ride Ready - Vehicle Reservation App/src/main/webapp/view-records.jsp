@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="com.web.database.DBConnection" %>
 <%@ page import="java.sql.*" %>
+<%@page import="org.owasp.encoder.Encode"%>
 
 <!DOCTYPE html>
 <html>
@@ -35,6 +36,7 @@ if (successMessage != null && !successMessage.isEmpty()) {
     
 <%
     String username = (String) request.getSession().getAttribute("username");
+
     Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -44,14 +46,14 @@ if (successMessage != null && !successMessage.isEmpty()) {
         con = DBConnection.getCon();
 
         if (con != null) {
+        	 // Mitigate SQL Injection by using prepared statements
             ps = con.prepareStatement("select * from vehicle_service where username = ?");
             ps.setString(1, username);
             rs = ps.executeQuery();
 
             if (rs.next()) {
+
 %>
-
-
 
     <!-- Display the user's vehicle service reservation -->
     <h2 class="record">Reservation Records</h2>
@@ -67,23 +69,24 @@ if (successMessage != null && !successMessage.isEmpty()) {
             <th>Message</th>
             <th>Username</th>
             <th>Action</th>
-        </tr>
+        </tr>    
     </thead>
     <tbody>
         <%
             do {
-        %>    
-            <tr>
-                <td><%= rs.getString("booking_id") %></td>
-                <td><%= rs.getString("date") %></td>
-                <td><%= rs.getString("time") %></td>
-                <td><%= rs.getString("location") %></td>
-                <td><%= rs.getString("vehicle_no") %></td>
-                <td><%= rs.getString("mileage") %></td>
-                <td><%= rs.getString("message") %></td>
-                <td><%= rs.getString("username") %></td>
-                <td><a href="delete-reservation.jsp?id=<%= rs.getString("booking_id") %>">Delete</a></td>
-            </tr>
+        %>     
+			<tr>
+			   <td><%= Encode.forHtml(rs.getString("booking_id")) %></td>
+			   <td><%= Encode.forHtml(rs.getString("date")) %></td>
+			   <td><%= Encode.forHtml(rs.getString("time")) %></td>
+			   <td><%= Encode.forHtml(rs.getString("location")) %></td>
+			   <td><%= Encode.forHtml(rs.getString("vehicle_no")) %></td>
+			   <td><%= Encode.forHtml(rs.getString("mileage")) %></td>
+			   <td><%= Encode.forHtml(rs.getString("message")) %></td>
+			   <td><%= Encode.forHtml(rs.getString("username")) %></td>
+			   <td><a href="delete-reservation.jsp?id=<%= rs.getString("booking_id") %>">Delete</a></td>
+			</tr>
+            
         <%
             } while (rs.next());
         %>
@@ -121,5 +124,3 @@ if (successMessage != null && !successMessage.isEmpty()) {
 %>
 </body>
 </html>
-
-
