@@ -5,6 +5,8 @@
 <%@ page import="java.sql.*"%>
 
 <%
+
+
 String bookingId = request.getParameter("id");
 
     try {

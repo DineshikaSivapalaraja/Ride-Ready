@@ -31,5 +31,10 @@ public class OIDCConfig {
     public static String getTokenEndpoint() {
         return properties.getProperty("oidc_tokenUrl");
     }
+    
+    public static String getUserinfoEndpoint() {
+        return properties.getProperty("oidc_userinfoUrl");
+    }
 }
+
 
