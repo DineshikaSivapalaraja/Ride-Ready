@@ -5,7 +5,7 @@ Ride Ready is a dynamic web vehicle service reservation application created to c
 
 To use my app user need to consider some steps
 1) User can download the project file here(GitHub)
-2) The user needs an Asgardeo account, , traditional web application (go through this link: https://wso2.com/asgardeo/docs/)
+2) The user needs an Asgardeo account to create traditional web application (go through this link: https://wso2.com/asgardeo/docs/)
 3) Tomcat Server configuration
 
 Refer my blog to get more knowledge to work with Ride Ready
