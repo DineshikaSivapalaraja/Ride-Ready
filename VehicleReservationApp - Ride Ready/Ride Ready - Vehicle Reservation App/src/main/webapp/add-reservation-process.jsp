@@ -34,7 +34,8 @@
 
         // Perform database operations (insertion) here using the retrieved data
         Connection con = DBConnection.getCon();
-        PreparedStatement ps = con.prepareStatement("insert into vehicle_service (date, time, location, vehicle_no, mileage, message, username) values(?,?,?,?,?,?,?)");
+        PreparedStatement ps = con.prepareStatement("INSERT INTO vehicle_service (date, time, location, vehicle_no, mileage, message, username) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
         // Set parameters for the prepared statement
         ps.setDate(1, sqlDate);
         ps.setTime(2, sqlTime);
@@ -48,18 +49,8 @@
         int rowsAffected = ps.executeUpdate();
 
         if (rowsAffected > 0) {
-            // Redirect to the same page with a success message
-            //response.sendRedirect("add-reservation.jsp?msg=valid");
-            
-        	// Debugging statement
-           //System.out.println("Reservation added successfully!");
-          response.sendRedirect("add-reservation.jsp?msg=valid");
+            response.sendRedirect("add-reservation.jsp?msg=valid");
         } else {
-            // Redirect to the same page with an error message
-           // response.sendRedirect("add-reservation.jsp?msg=Invalid");
-            
-         // Debugging statement
-            //System.out.println("Failed to add reservation.");
             response.sendRedirect("add-reservation.jsp?msg=Invalid");
         }
 

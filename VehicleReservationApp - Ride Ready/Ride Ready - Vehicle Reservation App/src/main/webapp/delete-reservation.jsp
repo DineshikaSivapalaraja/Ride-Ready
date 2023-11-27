@@ -14,8 +14,13 @@ String bookingId = request.getParameter("id");
 
         int rowsAffected = ps.executeUpdate();
 
+
         if (rowsAffected > 0) {
-            response.sendRedirect("view-records.jsp"); // Redirect to view-records.jsp after successful deletion
+            // Set success message attribute
+            request.setAttribute("successMessage", "Deleted vehicle reservation successfully!");
+            // Forward the request to view-records.jsp
+            RequestDispatcher rd = request.getRequestDispatcher("view-records.jsp");
+            rd.forward(request, response);
         } else {
             response.sendRedirect("view-records.jsp?msg=Invalid"); // Redirect with an error message
         }

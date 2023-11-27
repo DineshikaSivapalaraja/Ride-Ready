@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="com.web.database.DBConnection" %>
-<%@ page import="com.web.database.DBConfig" %>
 <%@ page import="java.sql.*" %>
 
 <!DOCTYPE html>
@@ -12,29 +9,6 @@
       <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
-       <div class="navbar">
-          <h1> Vehicle Service Reservation <br> Ride Ready</h1>
-          <ul class="nav">
-              <li class="nl"><a href="home.jsp">Home</a></li>
-              <li class="nl"><a href="add-reservation.jsp">Add</a></li>
-          </ul>
-      </div>
-       
-<%
-       String username =  (String)request.getSession().getAttribute("username");
-           try {
-               
-               // For testing purposes, set manual username
-               //String username = "testuser";
-
-               // Fetch reservation records from the database
-               Connection con = DBConnection.getCon();
-               PreparedStatement ps = con.prepareStatement("select * from vehicle_service where username = ?");
-               ps.setString(1, username);
-               ResultSet rs = ps.executeQuery();
-
-               if (rs.next()) {
-       %>
 
     <div class="navbar">
          <h1> Vehicle Service Reservation <br> Ride Ready</h1>
@@ -42,8 +16,42 @@
               <li class="nl"><a href="home.jsp">Home</a></li>
               <li class="nl"><a href="user-profile.jsp">Profile</a></li>
               <li class="nl"><a href="add-reservation.jsp">Add</a></li>
+              <li class="nl"><a href="https://api.asgardeo.io/t/dineshiorg/oidc/logout">Logout</a></li>
          </ul>
     </div>
+    
+  <%
+// Check for success message attribute
+String successMessage = (String) request.getAttribute("successMessage");
+
+if (successMessage != null && !successMessage.isEmpty()) {
+%>
+    <div class="success-message" style="color: red; font-size: 30px; text-align: center;">
+        <%= successMessage %>
+    </div>
+<%
+}
+%>
+    
+<%
+    String username = (String) request.getSession().getAttribute("username");
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
+    try {
+        // Fetch reservation records from the database
+        con = DBConnection.getCon();
+
+        if (con != null) {
+            ps = con.prepareStatement("select * from vehicle_service where username = ?");
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+%>
+
+
 
     <!-- Display the user's vehicle service reservation -->
     <h2 class="record">Reservation Records</h2>
@@ -63,36 +71,55 @@
     </thead>
     <tbody>
         <%
-           do {
+            do {
         %>    
-         <tr>
-             <td><%= rs.getString("booking_id") %></td>
-             <td><%= rs.getString("date") %></td>
-             <td><%= rs.getString("time") %></td>
-             <td><%= rs.getString("location") %></td>
-             <td><%= rs.getString("vehicle_no") %></td>
-             <td><%= rs.getString("mileage") %></td>
-             <td><%= rs.getString("message") %></td>
-             <td><%= rs.getString("username") %></td>
-             <td><a href="delete-reservation.jsp?id=<%= rs.getString("booking_id") %>">Delete</a></td><!--  fix  -->
-         </tr>
-         <%
-             } while (rs.next());
-         %>
+            <tr>
+                <td><%= rs.getString("booking_id") %></td>
+                <td><%= rs.getString("date") %></td>
+                <td><%= rs.getString("time") %></td>
+                <td><%= rs.getString("location") %></td>
+                <td><%= rs.getString("vehicle_no") %></td>
+                <td><%= rs.getString("mileage") %></td>
+                <td><%= rs.getString("message") %></td>
+                <td><%= rs.getString("username") %></td>
+                <td><a href="delete-reservation.jsp?id=<%= rs.getString("booking_id") %>">Delete</a></td>
+            </tr>
+        <%
+            } while (rs.next());
+        %>
      </tbody>
      </table>
-    
 <%
-     } else {
+            } else {
 %>
-     <p style="color: red; font-size: 30px; text-align: center;">No reservations.</p>
+    <p style="color: red; font-size: 30px; text-align: center;">No reservations!</p>
 <%
-      }
+            }
+        } else {
+%>
+    <p style="color: red; font-size: 30px; text-align: center;">Database connection is null.</p>
+<%
+        }
     } catch (SQLException e) {
         e.printStackTrace();
+    } finally {
+        // Close resources in a finally block
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 %>
-
 </body>
 </html>
+
 

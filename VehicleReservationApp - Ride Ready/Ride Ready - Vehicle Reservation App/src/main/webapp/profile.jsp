@@ -17,7 +17,7 @@
               <li class="nl"><a href="home.jsp">Home</a></li>
               <li class="nl"><a href="view-records.jsp">Records</a></li>
               <li class="nl"><a href="add-reservation.jsp">Add</a></li>
-              <li class="nl">Logout</li>
+              <li class="nl"><a href="https://api.asgardeo.io/t/dineshiorg/oidc/logout">Logout</a></li>
            </ul>
       </div>
 <%
