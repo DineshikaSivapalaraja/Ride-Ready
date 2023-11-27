@@ -4,7 +4,7 @@ A vehicle service reservation application with a focus on security, authenticati
 Ride Ready is a dynamic web vehicle service reservation application created to consider security aspects, OWASP 10 vulnerabilities, authentication, and access control.
 
 To use my app user need to consider some steps
-1) User can download the project file here(GitHub)
+1) User can download the project file on my account(GitHub)
 2) The user needs an Asgardeo account to create traditional web application (go through this link: https://wso2.com/asgardeo/docs/)
 3) Tomcat Server configuration
 
