@@ -10,6 +10,8 @@ To use my app user need to consider some steps
 
 Refer my blog to get more knowledge to work with Ride Ready
 Blog URL: https://medium.com/@dinraja17/ride-ready-a-journey-into-owasp-top-10-vulnerability-mitigation-and-cloud-based-identity-ca1ebc66e7cc
+
+Note: I uploaded only build.src directories in the VehicleReservationApp-Ride Ready folder. For that, please ignore that folder when you run the app. That's why I uploaded the complete files outside of that folder again manually.
    
 
 
